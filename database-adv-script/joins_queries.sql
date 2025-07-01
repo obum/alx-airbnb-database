@@ -4,7 +4,8 @@ INNER JOIN bookings b ON a.user_id = b.user_id;
 
 SELECT * 
 FROM properties a
-LEFT JOIN reviews b ON a.property_id = b.property_id;
+LEFT JOIN reviews b ON a.property_id = b.property_id
+ORDER BY b.rating;
 
 SELECT * 
 FROM users u
