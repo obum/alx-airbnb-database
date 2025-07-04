@@ -3,7 +3,7 @@
 -- Booking -> start_date & status & user_id
 -- Property -> host-id & country & state &pricepernight
 
-CREATE INDEX ind_bookings_start_date
+CREATE INDEX idx_bookings_start_date
 ON bookings (start_date);
 
 CREATE INDEX idx_bookings_status 
@@ -33,11 +33,11 @@ DROP INDEX idx_bookings_start_date;
 CREATE INDEX ind_bookings_total_price
 ON bookings (total_price);
 
-SELECT * FROM bookings WHERE start_date = '2025-07-01';
+EXPLAIN ANALYZE SELECT * FROM bookings WHERE start_date = '2025-07-01';
 
 EXPLAIN (ANALYZE, VERBOSE, BUFFERS) SELECT * FROM bookings WHERE total_price > 1900;
 
-
+-- EXPLAIN ANALYZE SELECT * FROM bookings WHERE status = 'pending';
 
 SELECT
     idx.relname AS index_name,
