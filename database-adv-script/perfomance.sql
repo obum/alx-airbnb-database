@@ -4,7 +4,8 @@ SELECT *
 FROM bookings b
 INNER JOIN users u ON b.user_id = u.user_id
 LEFT JOIN properties p ON p.property_id = b.property_id
-LEFT JOIN payments py ON py.booking_id = b.booking_id;
+LEFT JOIN payments py ON py.booking_id = b.booking_id
+WHERE b.status = 'confirmed' AND py.amount is NOT NULL;
 
 EXPLAIN
 ANALYZE
